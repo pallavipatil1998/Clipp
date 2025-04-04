@@ -30,11 +30,14 @@ class Clipp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Padding(
-        padding: const EdgeInsets.all(40.0),
-        child: ClipPath(
-          clipper: PathClipper(),
-          child: Image.asset("assets/images/img_natural9.jpg",fit: BoxFit.cover,),
+      body:Center(
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: ClipPath(
+            clipper: PathClipper(),
+            child: Container(height: 400,width: 400,
+                child: Image.asset("assets/images/img_natural9.jpg",fit: BoxFit.cover,)),
+          ),
         ),
       )
 
@@ -79,7 +82,7 @@ class PathClipper extends CustomClipper<Path>{
   Path getClip(Size size) {
    var mPath= Path();
 
-   //1
+   //1 Clip
    // mPath.lineTo(size.width,0);
    // mPath.lineTo(0,size.height);
    // mPath.lineTo(size.width,size.height);
@@ -87,12 +90,20 @@ class PathClipper extends CustomClipper<Path>{
    // mPath.lineTo(size.width,size.height/2);
 
 
-   //2
+   //2 Clip With Moveto
    // mPath.moveTo(size.width*0.5, 0);
-   mPath.moveTo(0, size.height);
+  /* mPath.moveTo(0, size.height);
    mPath.lineTo(size.width*0.5, size.height*0.75);
+   mPath.lineTo(size.width, size.height);*/
+
+   //3 Curve
+   mPath.lineTo(size.width, 0);
+   mPath.quadraticBezierTo(size.width*0.3, size.height*0.5, size.width, size.height);
+
    mPath.lineTo(size.width, size.height);
-   
+   mPath.lineTo(size.width*0.1,size.height);
+   mPath.quadraticBezierTo(size.width*0.8, size.height*0.5, 0, 0);
+
    
    return mPath;
   }
