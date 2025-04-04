@@ -33,7 +33,9 @@ class Clipp extends StatelessWidget {
       body:Padding(
         padding: const EdgeInsets.all(80.0),
         child: ClipOval(
-          child: Image.asset("assets/images/img_natural9.jpg"),
+          child: SizedBox(
+            width: 200,height: 200,
+              child: Image.asset("assets/images/img_natural9.jpg",fit: BoxFit.cover,)),
         ),
       )
 
