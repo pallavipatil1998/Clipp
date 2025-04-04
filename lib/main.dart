@@ -32,8 +32,7 @@ class Clipp extends StatelessWidget {
     return Scaffold(
       body:Padding(
         padding: const EdgeInsets.all(80.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(50),
+        child: ClipOval(
           child: Image.asset("assets/images/img_natural9.jpg"),
         ),
       )
