@@ -31,11 +31,10 @@ class Clipp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body:Padding(
-        padding: const EdgeInsets.all(80.0),
-        child: ClipOval(
-          child: SizedBox(
-            width: 200,height: 200,
-              child: Image.asset("assets/images/img_natural9.jpg",fit: BoxFit.cover,)),
+        padding: const EdgeInsets.all(40.0),
+        child: ClipPath(
+          clipper: PathClipper(),
+          child: Image.asset("assets/images/img_natural9.jpg",fit: BoxFit.cover,),
         ),
       )
 
@@ -67,5 +66,40 @@ class Clipp extends StatelessWidget {
         ],
       ),*/
     );
+    
+    
+    
+    
   }
+}
+
+
+class PathClipper extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
+   var mPath= Path();
+
+   //1
+   // mPath.lineTo(size.width,0);
+   // mPath.lineTo(0,size.height);
+   // mPath.lineTo(size.width,size.height);
+   // mPath.lineTo(size.width,size.height*0.5);
+   // mPath.lineTo(size.width,size.height/2);
+
+
+   //2
+   // mPath.moveTo(size.width*0.5, 0);
+   mPath.moveTo(0, size.height);
+   mPath.lineTo(size.width*0.5, size.height*0.75);
+   mPath.lineTo(size.width, size.height);
+   
+   
+   return mPath;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
+  }
+  
 }
