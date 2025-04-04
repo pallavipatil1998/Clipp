@@ -96,15 +96,25 @@ class PathClipper extends CustomClipper<Path>{
    mPath.lineTo(size.width*0.5, size.height*0.75);
    mPath.lineTo(size.width, size.height);*/
 
-   //3 Curve
-   mPath.lineTo(size.width, 0);
+   //3 Curve quadraticBezierTo
+   /*mPath.lineTo(size.width, 0);
    mPath.quadraticBezierTo(size.width*0.3, size.height*0.5, size.width, size.height);
 
    mPath.lineTo(size.width, size.height);
    mPath.lineTo(size.width*0.1,size.height);
    mPath.quadraticBezierTo(size.width*0.8, size.height*0.5, 0, 0);
+*/
 
-   
+   //4 Cubic To
+   mPath.lineTo(size.width*0.8, 0);
+   mPath.cubicTo(size.width, size.height*0.2, size.width*0.6, size.height*0.8, size.width*0.8, size.height);
+   //mPath.quadraticBezierTo(size.width*0.7, size.height*0.5, size.width, size.height);
+   //mPath.lineTo(size.width*0.8, size.height);
+   mPath.lineTo(size.width*0.5, size.height);
+   mPath.cubicTo(size.width*0.1, size.height*0.75, size.width*0.3, size.height*0.1, 0, 0);
+
+   mPath.close();
+
    return mPath;
   }
 
